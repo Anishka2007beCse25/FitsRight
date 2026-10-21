@@ -1,75 +1,73 @@
-# React + TypeScript + Vite
+# FitsRight
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FitsRight is a project I'm building to make it easier to check whether a laptop and a docking station will work together.
 
-Currently, two official plugins are available:
+Choosing accessories for a laptop can get confusing, especially when you're not sure which devices are compatible. I wanted to build something that helps people check compatibility before spending money on hardware.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The app uses a catalogue of devices and a rule-based system to check combinations. If it doesn't have enough information about a combination, it tells the user instead of making assumptions.
 
-## React Compiler
+## What can it do
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Check laptop and docking-station combinations.
+- Use stored compatibility information to evaluate devices.
+- Show clear results so users can understand what the app found.
+- Handle unknown combinations cautiously instead of giving misleading answers.
 
-## Expanding the ESLint configuration
+I'm continuing to improve the project and explore ways to make the experience more useful.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Built with
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React
+- TypeScript
+- Vite
+- CSS
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Running it locally
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+You'll need Node.js and npm installed on your computer.
 
-```
+1. Clone the repository
+bash
+git clone https://github.com/Anishka2007beCse25/FitsRight.git
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+2. Open the project folder
+bash
+cd FitsRight
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Install the dependencies
+bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Start the app
+bash
+npm run dev
 
-```
+Open the local URL shown in your terminal to see FitsRight in your browser.
+
+To check the production build, run:
+
+bash
+npm run build
+
+## A look at the project
+
+Most of the compatibility logic lives in `src/engine/`. This folder contains the device catalogue, the rules used to evaluate compatibility, and the types used by the application.
+
+The main interface is in `src/App.tsx`, with its styling in the CSS files.
+
+## What's next?
+
+Some things I'd like to work on next:
+
+- Adding more laptops and docking stations to the catalogue.
+- Making compatibility results easier to understand.
+- Improving the overall user experience.
+- Exploring assistant-based ways to help users with compatibility questions.
+
+## A quick note about compatibility
+
+The results depend on the information currently available in FitsRight. If a device combination hasn't been verified, the app shouldn't be treated as proof that it will or won't work. It's always a good idea to confirm compatibility with the manufacturer before buying.
+
+## License
+
+This project is intended to be released under the MIT License. See the `LICENSE` file for details.
